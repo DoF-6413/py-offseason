@@ -1,28 +1,26 @@
 import wpilib
 import wpilib.drive
 import wpilib.src
-import subsistemas.gyro.Gyro
-import math
-import wpimath.geometry
-
-
-
-modules = [4]
-gyro = subsistemas.gyro.Gyro
-maxAngularSpeed = 5 
-velocidadmaxima = 10
-timer = wpilib.Timer()
+import swerveModule
+import subsistemas.gyro.Gyro as Gyro
+import wpimath.kinematics as kinematics 
+import wpimath.geometry as geometry
 
 class swerve():
 
-  def __init__(self) -> None:
-    #middle is at 1,1
-
-    self.FLPose = wpimath.geometry.Translation2d(0,2)
-    self.FRPose = wpimath.geometry.Translation2d(2.2)
-    self.BLPose = wpimath.geometry.Translation2d(0,0)
-    self.BRPose = wpimath.geometry.Translation2d(2,0)
-    timer.start
+  velocidadmaxima = 10
+  timer = wpilib.Timer()
+  kinematics = kinematics.SwerveDrive2Kinematics
+  modules = [4]
   
-      
 
+  
+  def __init__(self) -> None:
+
+    self.modules[0] = swerveModule.swerveModule(0)
+    self.modules[1] = swerveModule.swerveModule(1)
+    self.modules[2] = swerveModule.swerveModule(2)
+    self.modules[3] = swerveModule.swerveModule(3)
+    self.kinematics = kinematics.SwerveDrive2Kinematics()
+    self.timer.start
+    

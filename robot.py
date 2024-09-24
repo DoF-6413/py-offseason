@@ -18,10 +18,10 @@ class MyRobot(wpilib.TimedRobot):
         """
         self.steermotors = wpilib.CAN(1)
         self.Drivemotors = wpilib.CAN(2)
-        self.robotDrive = 0#TODO: updateit
+        self.robotDrive = 0#TODO: update it
         self.controller = wpilib.XboxController(0)
         self.timer = wpilib.Timer()
-        self.rightDrive.setInverted(True)
+        self.rightDrive.setInverted(True)#TODO update 
         # We need to invert one side of the drivetrain so that positive voltages
         # result in both sides moving forward. Depending on how your robot's
         # gearbox is constructed, you might have to invert the left side instead.
@@ -37,15 +37,15 @@ class MyRobot(wpilib.TimedRobot):
         # Drive for two seconds
         if self.timer.get() < 2.0:
             # Drive forwards half speed, make sure to turn input squaring off
-            self.robotDrive.arcadeDrive(0.5, 0, squareInputs=False)
+            self.robotDrive.arcadeDrive(0.5, 0, squareInputs=False) # TODO CHANGE THIS 
         else:
-            self.robotDrive.stopMotor()  # Stop robot
+            self.robotDrive.stopMotor()  # Stop robot #TODO CHANGE THIS 
 
     def teleopInit(self):
         """This function is called once each time the robot enters teleoperated mode."""
 
     def teleopPeriodic(self):
-        """This function is called periodically during teleoperated mode."""
+        """This function is called periodically during teleoperated mode.""" #TODO: update this 
         self.robotDrive.arcadeDrive(
             -self.controller.getLeftY(), -self.controller.getRightX()
         )
