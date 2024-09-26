@@ -5,9 +5,8 @@ import wpimath.geometry as geometry
 import wpimath.controller 
 import wpimath.trajectory
 import wpimath.units as units 
-from rev import SparkAbsoluteEncoder
 import Constants
-from rev import CANSparkMax
+from rev import CANSparkMax # if doesn't work uninstall and install the library again 
 
 WHEEL_RAD = units.inchesToMeters(2)
 ENCODER_RESOLUTION = 4096
@@ -38,6 +37,12 @@ class swerveModule:
                 self.turningMotor = CANSparkMax()#TODO CHECK ID
                 self.driveEncoder = self.driverMotor.getEncoder()
                 self.turningEncoder = self.turningMotor.getEncoder()
+
+        self.driverMotor.burnFlash()
+        self.turningMotor.burnFlash()
+
+        self.driverMotor.setCANTimeout(500)
+        self.turningMotor.setCANTimeout(500)
     def getState(self) -> kinematics.SwerveModuleState:
         """Returns the current state of the module.
 
@@ -51,7 +56,7 @@ class swerveModule:
 
         :returns: The current position of the module.
         """    
-        return kinematics.SwerveModulePosition(self.driveEncoder.getPosition,wpimath.geometry.Rotation2d(self.turningEncoder.getPosition))
+        return kinematics.SwerveModulePosition(self.driveEncoder.getPosition,geometry.Rotation2d(self.turningEncoder.getPosition))
     def getkinematics(self) -> kinematics.SwerveDrive2Kinematics:
         """returns the kinematics of the modules"""
         return kinematics.SwerveDrive2Kinematics(Constants.getModuleTranslations)

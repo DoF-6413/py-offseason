@@ -4,14 +4,14 @@ import wpilib.src
 import swerveModule
 import subsistemas.gyro.Gyro as Gyro
 import subsistemas.chassis.swerveModule as swervemodule
-import wpimath.kinematics as kinematics 
+import wpimath.kinematics as kinematic
 import wpimath.geometry as geometry
 
 class swerve():
 
   velocidadmaxima = 10
   timer = wpilib.Timer()
-  kinematics = kinematics.SwerveDrive2Kinematics
+  kinematics = kinematic.SwerveDrive2Kinematics
   modules = [4]
   
 
@@ -24,4 +24,6 @@ class swerve():
     self.modules[3] = swerveModule.swerveModule(3)
     self.kinematics = swerveModule.swerveModule.getkinematics()
     self.timer.start
+    
+    
     

@@ -1,7 +1,8 @@
-robotpy_navx 
-robotpy
-wpilib
-rev
-robotpy_ext
-robotpy-robotpy_navx
-robotpy-rev 
+pip install robotpy_navx 
+pip install robotpy
+pip install wpilib
+pip install rev
+pip install robotpy_ext
+pip install robotpy-robotpy_navx
+pip install robotpy-rev 
+pip install phoenix6
