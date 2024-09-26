@@ -4,12 +4,12 @@ import wpimath.kinematics as kinematics
 import wpimath.geometry as geometry
 import wpimath.controller 
 import wpimath.trajectory
-import wpimath.units
+import wpimath.units as units 
 from rev import SparkAbsoluteEncoder
-
+import Constants
 from rev import CANSparkMax
 
-WHEEL_RAD = wpimath.units.inchesToMeters(2)
+WHEEL_RAD = units.inchesToMeters(2)
 ENCODER_RESOLUTION = 4096
 MODULE_MAX_ANG_VEL = math.pi #Module max angular vel 
 MODULE_MAX_ACCELERATION = math.tau  # module max angula acceleration Tau (τ) is a mathematical constant that is the ratio of a circle's circumference to its radius. This produces a number, and that number is always the same.
@@ -52,3 +52,6 @@ class swerveModule:
         :returns: The current position of the module.
         """    
         return kinematics.SwerveModulePosition(self.driveEncoder.getPosition,wpimath.geometry.Rotation2d(self.turningEncoder.getPosition))
+    def getkinematics(self) -> kinematics.SwerveDrive2Kinematics:
+        """returns the kinematics of the modules"""
+        return kinematics.SwerveDrive2Kinematics(Constants.getModuleTranslations)

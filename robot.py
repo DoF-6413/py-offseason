@@ -11,7 +11,7 @@ import wpilib.src
 
 
 class MyRobot(wpilib.TimedRobot):
-    def robotInit(self):
+    def robotInit(self) -> None:
         """
         This function is called upon program startup and
         should be used for any initialization code.
@@ -27,11 +27,11 @@ class MyRobot(wpilib.TimedRobot):
         # gearbox is constructed, you might have to invert the left side instead.
         
 
-    def autonomousInit(self):
+    def autonomousInit(self) -> None:
         """This function is run once each time the robot enters autonomous mode."""
         self.timer.restart()
 
-    def autonomousPeriodic(self):
+    def autonomousPeriodic(self) -> None:
         """This function is called periodically during autonomous."""
 
         # Drive for two seconds
@@ -41,19 +41,19 @@ class MyRobot(wpilib.TimedRobot):
         else:
             self.robotDrive.stopMotor()  # Stop robot #TODO CHANGE THIS 
 
-    def teleopInit(self):
+    def teleopInit(self) -> None:
         """This function is called once each time the robot enters teleoperated mode."""
 
-    def teleopPeriodic(self):
+    def teleopPeriodic(self) -> None:
         """This function is called periodically during teleoperated mode.""" #TODO: update this 
         self.robotDrive.arcadeDrive(
             -self.controller.getLeftY(), -self.controller.getRightX()
         )
 
-    def testInit(self):
+    def testInit(self) -> None:
         """This function is called once each time the robot enters test mode."""
 
-    def testPeriodic(self):
+    def testPeriodic(self) -> None:
         """This function is called periodically during test mode."""
 
 
